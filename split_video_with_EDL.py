@@ -1,6 +1,7 @@
 import os
 import re
 import pdb
+import glob
 import subprocess
 import numpy as np
 from pathlib import Path
@@ -9,11 +10,13 @@ from pathlib import Path
 pdir          = '/Users/joe/Movies/footage/Castleton/project'
 EDL_FILE      = f'{pdir}/Castleton_v1_30fps.edl'
 FULL_VIDEO    = f'{pdir}/Castleton_v1_30fps.mp4'
-OUTPUT_DIR    = f'{pdir}/timeline_clips'
+OUTPUT_FOLDER    = f'{pdir}/timeline_clips'
 OUTPUT_FORMAT = 'mp4'
 FPS           = 30 # FPS of input video and EDL must match
 
-Path(OUTPUT_DIR).mkdir(exist_ok=True)
+overwrite = False
+
+Path(OUTPUT_FOLDER).mkdir(exist_ok=True)
 cuts    = []
 cuts_tc = []
 
@@ -42,7 +45,12 @@ for i in range(len(cuts)):
     start_tc, end_tc = cuts_tc[i][:]
     duration = end - start
     out_name = f'clip_{str(i).zfill(4)}.{OUTPUT_FORMAT}'
-    out_path = f'{OUTPUT_DIR}/{out_name}'
+    out_path = f'{OUTPUT_FOLDER}/{out_name}'
+   
+    
+    if(len(glob.glob(out_path)) > 0 and not overwrite):
+        print(f'file {out_name} exists; skipping')
+        continue
 
     # get pix_fmt of input video
     cmd = ['ffprobe',
