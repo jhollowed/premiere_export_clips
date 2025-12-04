@@ -1,14 +1,6 @@
 // ================================
-// Batch Render PMB with Imported Clips (Forced ProRes 422 LT Output)
+// Batch Render PMB with Imported Clips
 // ================================
-
-/*
-Requirements:
-- Template comp named "PMB_Template"
-- Placeholder layer with PMB applied as layer 1
-- All clips imported into the project
-- Output Module template named "ProRes422LT" saved in AE
-*/
 
 var outputFolder = new Folder("/Users/joe/Movies/footage/Castleton/project/motion_blurred_clips");
 if (!outputFolder.exists) {
@@ -87,7 +79,7 @@ for (var c = 0; c < footageClips.length; c++) {
     try {
         rqItem.outputModule(1).applyTemplate("CastletonMP4");
     } catch (e) {
-        alert("Output Module template 'ProRes422LT' not found! Please create it in AE first.");
+        alert("Output Module template 'CastletonMP4' not found! Please create it in AE first.");
         newComp.remove();
         throw new Error("Output Module template missing");
     }
@@ -105,5 +97,5 @@ for (var c = 0; c < footageClips.length; c++) {
     newComp.remove();
 }
 
-alert("All clips rendered with Pixel Motion Blur in ProRes 422 LT!");
+alert("All clips rendered with Pixel Motion Blur");
 
