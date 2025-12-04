@@ -1,6 +1,6 @@
 Use case:
 
-You're editing a long video in Premiere, and realize that you forgot your ND filters. Every single clip needs motion blur added. The only way to convincingly do this is with AE's Pixel Motion Blur (PMB). So you need to export every clip from Premiere, and send them to AE flor blurring. However, you also have basically no space left on your computer, and AE's PMB generates a massive cache for even a few seconds of high-resolution video. Here is the solution:
+You're editing a long video in Premiere, and realize that you forgot your ND filters. Every single clip needs motion blur added. The only way to convincingly do this is with AE's Pixel Motion Blur (PMB). So you need to export every clip from Premiere, and send them to AE for blurring. However, you also have basically no space left on your computer, and AE's PMB generates a massive cache for even a few seconds of high-resolution video. Here is the solution:
 
 ### Step 1:
 
